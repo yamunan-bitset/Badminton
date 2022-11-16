@@ -29,12 +29,20 @@ void Ball::draw()
 {
 	DrawCircle(x, y, radius, RAYWHITE);
 }
+#include <iostream> // For Debug
 
 void Ball::update()
 {
 	dtiters++;
-	y -= gravity * GetFrameTime() * 10 * dtiters;
+	if (((y <= 535) || (y >= 537)) && ((x <= player.x - 17) || (x >= player.x + 17)))
+		y -= gravity * GetFrameTime() * 10 * dtiters;
 
+	/*std::cout << "Ball:" << x << ',' << y << std::endl;
+	std::cout << "Player:" << player.x << ',' << player.y << std::endl;*/
+	/*if ((y >= player.y + player.h) && (y <= player.y)) std::cout << "ycoll" << std::endl;
+	if ((x >= player.x + player.w) && (x <= player.x)) std::cout << "xcoll" << std::endl;*/
+	if (x == player.x) std::cout << "xcoll" << std::endl;
+	if (y == player.y) std::cout << "ycoll" << std::endl;
 	if (y + radius > h) y = h - radius;
 }
 

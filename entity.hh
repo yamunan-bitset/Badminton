@@ -5,7 +5,7 @@
 class Player
 {
 public:
-	float x, y, size = 64, w, h;
+	float x = 100, y, size = 64, w, h;
 	bool turn = true;
 	Player(float _w, float _h) : w(_w), h(_h) { x = 100; y = h - size; }
 	void draw();
@@ -20,17 +20,17 @@ public:
 	void draw();
 	void update();
 };
-
+inline bool is_close(float, float, float);
 class Ball
 {
 	unsigned dtiters = 0;
 public:
-	float x, y, radius = 10, w, h, gravity = -1, vel = 1;
+	float x, y, radius = 10, w = radius * 2, h = radius * 2, gravity = -1, vel = 1;
 	Player player;
 	Enemy enemy;
 	Ball(float _w, float _h, Player _player, Enemy _enemy) 
 		: w(_w), h(_h), player(_player), enemy(_enemy) 
-		{ x = w / 2; y = h / 2; }
+		{ x = 116; y = player.y - 100; }
 	void draw();
 	void update();
 };
